@@ -1,0 +1,32 @@
+<h2>Register</h2>
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">  <!-- ✅ Fix submit method -->
+  <label for="email">Email:</label>
+  <input id="email" type="email" formControlName="email" required>
+  <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">Valid email is required</p>
+  <br>
+  <label for="password">Password:</label>
+  <input id="password" type="password" formControlName="password" required>
+  <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">Password is required</p>
+  <br>
+  <label for="firstName">First Name:</label>
+  <input id="firstName" formControlName="firstName" required>
+  <p *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">First name is required</p>
+  <br>
+  <label for="lastName">Last Name:</label>
+  <input id="lastName" formControlName="lastName" required>
+  <p *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">Last name is required</p>
+  <br>
+  <label for="location">Location:</label>
+  <input id="location" formControlName="location" required>
+  <p *ngIf="registerForm.get('location')?.invalid && registerForm.get('location')?.touched">Location is required</p>
+  <br>
+  <label for="mobileNumber">Mobile Number:</label>
+  <input id="mobileNumber" formControlName="mobileNumber" required>
+  <p *ngIf="registerForm.get('mobileNumber')?.invalid && registerForm.get('mobileNumber')?.touched">Valid number required</p>
+  <br>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>
+

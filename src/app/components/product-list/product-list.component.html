@@ -1,0 +1,34 @@
+<h2>Product List</h2>
+
+<!-- Navigation Links -->
+
+<!-- Search Bar -->
+<input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search products...">
+
+<!-- Product Table -->
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of filteredProducts">
+      <td>{{ product.name }}</td>
+      <td>${{ product.price }}</td>
+      <td>
+        <button (click)="viewProduct(product.id)">View</button>
+        <button (click)="editProduct(product.id)">Edit</button>
+        <button (click)="deleteProduct(product.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Add Product Button -->
+<button (click)="addProduct()">Add Product</button>
+
+<!-- Footer -->
+
