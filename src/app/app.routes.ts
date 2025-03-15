@@ -11,7 +11,7 @@ export const appRoutes: Routes = [
   { path: '', component: ProductListComponent },  // Default Welcome Page
   { path: 'products', component: ProductListComponent },
   { path: 'product/:id', component: ProductDetailComponent },  // View Product
-  { path: 'product/:id/edit', component: ProductAddComponent }, // Edit Product
+  { path: 'product/:id/edit', component: ProductEditComponent }, // Edit Product
   { path: 'add-product', component: ProductAddComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

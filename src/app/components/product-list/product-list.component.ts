@@ -10,7 +10,7 @@ import { Product } from '../../models/product.model';
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, FooterComponent],  
+  imports: [CommonModule, FormsModule, RouterModule],  
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
@@ -48,7 +48,13 @@ export class ProductListComponent implements OnInit {
 
   // ✅ View Product
   viewProduct(id: number) {
-    this.router.navigate(['/product', id]);
+    if (!this.isLoggedIn()) {
+      alert("You need to log in to edit a product!");
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/product', id]);
+    }
+    
   }
 
   // ✅ Edit Product (Redirect to login if not logged in)

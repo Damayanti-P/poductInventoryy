@@ -1,21 +1,46 @@
 <h2>Update Product</h2>
 
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <!-- Name -->
   <label>Name:</label>
   <input type="text" formControlName="name" required>
-  
+  <p *ngIf="productForm.controls['name'].invalid && productForm.controls['name'].touched" class="error">
+    Name is required.
+  </p>
+  <br>
+  <!-- Description -->
   <label>Description:</label>
   <textarea formControlName="description" required></textarea>
-  
+  <p *ngIf="productForm.controls['description'].invalid && productForm.controls['description'].touched" class="error">
+    Description is required.
+  </p>
+  <br>
+  <!-- Manufacturer -->
   <label>Manufacturer:</label>
   <input type="text" formControlName="manufacturer" required>
-
+  <p *ngIf="productForm.controls['manufacturer'].invalid && productForm.controls['manufacturer'].touched" class="error">
+    Manufacturer is required.
+  </p>
+  <br>
+  <!-- Price -->
   <label>Price:</label>
   <input type="number" formControlName="price" required>
-
+  <p *ngIf="productForm.controls['price'].invalid && productForm.controls['price'].touched" class="error">
+    Price must be greater than 0.
+  </p>
+  <br>
+  <!-- Quantity -->
   <label>Quantity:</label>
   <input type="number" formControlName="quantity" required>
-
+  <p *ngIf="productForm.controls['quantity'].invalid && productForm.controls['quantity'].touched" class="error">
+    Quantity must be 0 or more.
+  </p>
+  <br>
   <button type="submit" [disabled]="!productForm.valid">Update Product</button>
 </form>
-<p *ngIf="errorMessage">{{ errorMessage }}</p>
+
+<!-- Error Message -->
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+<!-- Back to Products -->
+<button (click)="router.navigate(['/products'])">Cancel</button>
